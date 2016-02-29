@@ -1,11 +1,11 @@
 
 <div class="reportSection tableContainer">
     <h4>Habitats</h4>
-    <table>
+    <table data-paging="10">
       <thead>
         <tr>
-          <td>Habitat</td>
-          <td>Area (km<sup>2</sup></td>
+          <th>Habitat</th>
+          <th>Area (km<sup>2</sup>)</hd>
         </tr>
       </thead>
       <tbody>
@@ -15,36 +15,37 @@
             <td>{{AREA}}</td>
           </tr>
         {{/habs}}
+      </tbody>
     </table>
  </div>
 
-
  <div class="reportSection tableContainer">
     <h4>Amphbians</h4>
-    <table>
+    <table data-paging="10">
       <thead>
         <tr>
-          <td>Common Name</td>
-          <td>Area (km<sup>2</sup></td>
+          <th>Name</th>
+          <th>Area (km<sup>2</sup>)</th>
         </tr>
       </thead>
       <tbody>
-        {{#habs}}
+        {{#amphibians}}
           <tr>
             <td>{{NAME}}</td>
             <td>{{AREA}}</td>
           </tr>
-        {{/habs}}
+        {{/amphibians}}
+      </tbody>
     </table>
  </div>
 
   <div class="reportSection tableContainer">
     <h4>Reptiles</h4>
-    <table>
+    <table  data-paging="10">
       <thead>
         <tr>
-          <td>Common Name</td>
-          <td>Area (km<sup>2</sup></td>
+          <th>Name</th>
+          <th>Area (km<sup>2</sup>)</th>
         </tr>
       </thead>
       <tbody>
@@ -54,16 +55,17 @@
             <td>{{AREA}}</td>
           </tr>
         {{/reptiles}}
+      </tbody>
     </table>
  </div>
 
    <div class="reportSection tableContainer">
-    <h4>birds</h4>
-    <table>
+    <h4>Birds</h4>
+    <table data-paging="10">
       <thead>
         <tr>
-          <td>Common Name</td>
-          <td>Area (km<sup>2</sup></td>
+          <th>Name</th>
+          <th>Area (km<sup>2</sup>)</th>
         </tr>
       </thead>
       <tbody>
@@ -73,16 +75,17 @@
             <td>{{AREA}}</td>
           </tr>
         {{/birds}}
+      </tbody>
     </table>
  </div>
 
 <div class="reportSection tableContainer">
     <h4>Mammals</h4>
-    <table>
+    <table data-paging="10">
       <thead>
         <tr>
-          <td>Common Name</td>
-          <td>Area (km<sup>2</sup></td>
+          <th>Name</th>
+          <th>Area (km<sup>2</sup>)</th>
         </tr>
       </thead>
       <tbody>
@@ -92,5 +95,6 @@
             <td>{{AREA}}</td>
           </tr>
         {{/mammals}}
+      </tbody>
     </table>
  </div>

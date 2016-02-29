@@ -13,10 +13,19 @@ class OverviewTab extends ReportTab
 
     # create random data for visualization
     habs = @recordSet('HabitatToolbox', 'Habitat').toArray()
+    @roundData(habs)
+
     amphibians = @recordSet('HabitatToolbox', 'Amphibians').toArray()
+    @roundData(amphibians)
+
     reptiles = @recordSet('HabitatToolbox', 'Reptiles').toArray()
+    @roundData(reptiles)
+
     birds = @recordSet('HabitatToolbox', 'Birds').toArray()
+    @roundData(birds)
+
     mammals = @recordSet('HabitatToolbox', 'Mammals').toArray()
+    @roundData(mammals)
 
     isCollection = @model.isCollection()
 
@@ -34,6 +43,10 @@ class OverviewTab extends ReportTab
       mammals: mammals
     
     @$el.html @template.render(context, templates)
+    @enableTablePaging()
 
+  roundData: (items) =>  
+    for item in items
+      item.AREA = Number(item.AREA).toFixed(1)
 
 module.exports = OverviewTab

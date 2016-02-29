@@ -1,4 +1,5 @@
-Tab = require './overview.coffee'
+OverviewTab = require './overview.coffee'
+
 
 window.app.registerReport (report) ->
   report.tabs [OverviewTab]
