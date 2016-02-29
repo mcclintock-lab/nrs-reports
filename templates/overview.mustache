@@ -19,6 +19,26 @@
     </table>
  </div>
 
+   <div class="reportSection tableContainer">
+    <h4>Birds</h4>
+    <table data-paging="25">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Area (km<sup>2</sup>)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#birds}}
+          <tr>
+            <td>{{NAME}}</td>
+            <td>{{AREA}}</td>
+          </tr>
+        {{/birds}}
+      </tbody>
+    </table>
+ </div>
+
  <div class="reportSection tableContainer">
     <h4>Amphbians</h4>
     <table data-paging="10">
@@ -59,25 +79,7 @@
     </table>
  </div>
 
-   <div class="reportSection tableContainer">
-    <h4>Birds</h4>
-    <table data-paging="10">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Area (km<sup>2</sup>)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#birds}}
-          <tr>
-            <td>{{NAME}}</td>
-            <td>{{AREA}}</td>
-          </tr>
-        {{/birds}}
-      </tbody>
-    </table>
- </div>
+
 
 <div class="reportSection tableContainer">
     <h4>Mammals</h4>
