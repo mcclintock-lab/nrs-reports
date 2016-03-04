@@ -368,3 +368,25 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.axis text {
+  font: 12px sans-serif;
+  stroke: #000000;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x line {
+  stroke: none;
+}
+.big-x-labels {
+  font: 12px sans-serif;
+  stroke: "black";
+}
+.chart text {
+  fill: black;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
