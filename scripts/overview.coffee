@@ -152,10 +152,10 @@ class OverviewTab extends ReportTab
     num_bars = 10
     margins = {top: 12, right: 10, bottom: 18, left: 15}
     if window.d3
-      width =  420 - (margins.left + margins.right)
+      width =  440 - (margins.left + margins.right)
       height = 380 - (margins.top + margins.bottom)
 
-      xaxis_offset = height-margins.top
+      xaxis_offset = height-margins.bottom
       xaxis_labels = height-margins.top+2
       yoff = margins.bottom*-1
       y = d3.scale.linear().range([height, 0])
@@ -211,7 +211,7 @@ class OverviewTab extends ReportTab
 
       bar.append("rect")
           .attr("x", (d) -> return d.spacer)
-          .attr("y", (d) -> return y(d.value) - margins.top)
+          .attr("y", (d) -> return y(d.value) - margins.bottom)
           .attr("height", (d) -> return (height ) - y(d.value))
           .attr("width", (d) -> return barWidth)
           .style("fill",  (d) -> return d.color)
@@ -220,7 +220,7 @@ class OverviewTab extends ReportTab
 
       bar.append("text")
           .attr("x", (d) -> (barWidth / 2)+d.spacer)
-          .attr("y", (d) -> return y(d.value) - margins.top - 10)
+          .attr("y", (d) -> return y(d.value) - margins.bottom - 10)
           .attr("dy", ".75em")
           .text((d) ->  return d.value)
 
