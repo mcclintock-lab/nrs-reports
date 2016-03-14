@@ -152,6 +152,7 @@ class OverviewTab extends ReportTab
     num_bars = 10
     margins = {top: 12, right: 10, bottom: 18, left: 15}
     if window.d3
+
       width =  440 - (margins.left + margins.right)
       height = 380 - (margins.top + margins.bottom)
 
@@ -172,7 +173,8 @@ class OverviewTab extends ReportTab
         .ticks(0)
         .orient("left")
 
-      chart = d3.select(".chart")
+      el = @$('.chart')[0]
+      chart = d3.select(el)
         .attr("width", width+margins.left+margins.right)
         .attr("height", height+margins.top+margins.bottom)
       .append("g")
@@ -203,7 +205,8 @@ class OverviewTab extends ReportTab
 
       barWidth = ((width - num_group_gaps*group_gap) / num_bars) 
 
-      bar = chart.selectAll(".bar")
+      el = @$('.bar')[0]
+      bar = chart.selectAll(el)
           .data(data)
         .enter().append("g")
           .attr("transform", (d, i) ->  return "translate(" + i * barWidth + ",0)")
