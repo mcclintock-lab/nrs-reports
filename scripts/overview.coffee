@@ -35,7 +35,7 @@ class OverviewTab extends ReportTab
     mammals = @roundData(mammals)
 
     size = @recordSet('SizeToolbox', 'Size').float('Size')
-    aoi_size = size.toFixed(1)
+    aoi_size = @addCommas size.toFixed(1)
     res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
     aoi_res_name = res_name.toString()
     
@@ -252,6 +252,14 @@ class OverviewTab extends ReportTab
         .style("font-weight", "bold")
         .text((d) ->  return d.group)
 
-
+  addCommas: (num_str) =>
+    num_str += ''
+    x = num_str.split('.')
+    x1 = x[0]
+    x2 = if x.length > 1 then '.' + x[1] else ''
+    rgx = /(\d+)(\d{3})/
+    while rgx.test(x1)
+      x1 = x1.replace(rgx, '$1' + ',' + '$2')
+    return x1 + x2
 
 module.exports = OverviewTab
