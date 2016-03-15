@@ -14,6 +14,7 @@ class OverviewTab extends ReportTab
   template: templates.overview
   dependencies:[ 
     'HabitatToolbox'
+    'SizeToolbox'
   ]
   render: () ->
 
@@ -33,7 +34,13 @@ class OverviewTab extends ReportTab
     mammals = @recordSet('HabitatToolbox', 'Mammals').toArray()
     mammals = @roundData(mammals)
 
-
+    size = @recordSet('SizeToolbox', 'Size').float('Size')
+    aoi_size = size.toFixed(1)
+    res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
+    aoi_res_name = res_name.toString()
+    
+    aoi_name = @model.attributes.name
+    aoi_name = aoi_name.charAt(0).toUpperCase() + aoi_name.slice(1)
 
     isCollection = @model.isCollection()
 
@@ -49,6 +56,9 @@ class OverviewTab extends ReportTab
       reptiles: reptiles
       birds: birds
       mammals: mammals
+      aoi_size: aoi_size
+      aoi_res_name: aoi_res_name
+      aoi_name: aoi_name
     
     @$el.html @template.render(context, templates)
     @enableTablePaging()
