@@ -38,6 +38,8 @@ class OverviewTab extends ReportTab
     aoi_size = @addCommas size.toFixed(1)
     res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
     aoi_res_name = res_name.toString()
+
+    aoi_res_url = @getURL aoi_res_name
     
     aoi_name = @model.attributes.name
     aoi_name = aoi_name.charAt(0).toUpperCase() + aoi_name.slice(1)
@@ -59,6 +61,7 @@ class OverviewTab extends ReportTab
       aoi_size: aoi_size
       aoi_res_name: aoi_res_name
       aoi_name: aoi_name
+      aoi_res_url: aoi_res_url
     
     @$el.html @template.render(context, templates)
     @enableTablePaging()
@@ -70,6 +73,16 @@ class OverviewTab extends ReportTab
 
     items = _.sortBy items, (row) -> row.NAME
     return items
+
+  getURL: (name) =>
+    try
+      prefix = "http://www.ucnrs.org/reserves/"
+      lower = name.toLowerCase()
+      dashes =  lower.replace(/\s+/g, "-")
+      return prefix+dashes+".html"
+    catch err
+      console.log("err getting url: ", err)
+      return "http://www.ucnrs.org/reserves"
 
   drawCharts: (habitats, amphibians, reptiles, birds, mammals) =>
     num_habitats = habitats?.length
