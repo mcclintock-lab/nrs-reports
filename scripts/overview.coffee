@@ -76,7 +76,11 @@ class OverviewTab extends ReportTab
 
   getURL: (name) =>
     try
+      console.log(name)
       prefix = "http://www.ucnrs.org/reserves/"
+      if name == "Valentine Eastern Sierra Reserve -Valentine Camp"
+        return prefix+"valentine-eastern-sierra-reserve.html"
+      
       lower = name.toLowerCase()
       dashes =  lower.replace(/\s+/g, "-")
       return prefix+dashes+".html"
