@@ -80,13 +80,17 @@ class OverviewTab extends ReportTab
       prefix = "http://www.ucnrs.org/reserves/"
       if name == "Valentine Eastern Sierra Reserve -Valentine Camp"
         return prefix+"valentine-eastern-sierra-reserve.html"
-      
+      if name == "Steele Burnand Anza-Borrego Desert Research Center"
+        return prefix+"steeleburnand-anza-borrego-desert-research-center.html"
       lower = name.toLowerCase()
+      if name == "Ano Nuevo Island"
+        return prefix+"ano-nuevo-island-reserve.html"
       dashes =  lower.replace(/\s+/g, "-")
-      return prefix+dashes+".html"
+      slashes =  dashes.replace(/\//g, "")
+      return prefix+slashes+".html"
     catch err
       console.log("err getting url: ", err)
-      return "http://www.ucnrs.org/reserves"
+      return "http://www.ucnrs.org/reserves.html"
 
   drawCharts: (habitats, amphibians, reptiles, birds, mammals) =>
     num_habitats = habitats?.length
