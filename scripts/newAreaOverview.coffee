@@ -14,6 +14,7 @@ class NewAreaOverviewTab extends ReportTab
   template: templates.newAreaOverview
   dependencies:[ 
     'NewReserveHabitatToolbox'
+    'SizeToolbox'
   ]
   render: () ->
 
@@ -23,15 +24,32 @@ class NewAreaOverviewTab extends ReportTab
     missing_habs = @recordSet('NewReserveHabitatToolbox', 'MissingHabitat').toArray()
     console.log("missing: ", missing_habs)
     hab_count = @recordSet('NewReserveHabitatToolbox', 'HabitatCounts').toArray()
+    isCollection = @model.isCollection()
+    size = @recordSet('SizeToolbox', 'Size').float('Size')
+    aoi_size = @addCommas size.toFixed(1)
+    res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
+    if res_name == null or isCollection
+      aoi_res_name = "no sketches within an existing reserve"
+      isWithinReserve = false
+      aoi_res_url = ""
+    else
+      aoi_res_name = res_name.toString()
+      isWithinReserve = true
+      aoi_res_url = @getURL aoi_res_name
+    
+    aoi_name = @model.attributes.name
+    aoi_name = aoi_name.charAt(0).toUpperCase() + aoi_name.slice(1)
 
     try
       total_habs = hab_count[0].TOT
       found_habs = hab_count[0].FOUND
       missing_hab_count = hab_count[0].MISSING
+
+
     catch err
       console.log("err getting count ", err)
 
-    isCollection = @model.isCollection()
+    
     if isCollection
       sketch_type = "Collection"
     else
@@ -61,6 +79,11 @@ class NewAreaOverviewTab extends ReportTab
       sketch_name: sketch_name
       sketch_type: sketch_type
       missing_hab_count: missing_hab_count
+      isWithinReserve: isWithinReserve
+      aoi_size: aoi_size
+      aoi_res_name: aoi_res_name
+      aoi_name: aoi_name
+      aoi_res_url: aoi_res_url
     
     @$el.html @template.render(context, templates)
     @enableTablePaging()
@@ -79,6 +102,24 @@ class NewAreaOverviewTab extends ReportTab
     no_val = {"label":no_label+" ("+no_count+")", "value":no_count, "color":no_color, "yval":75}
 
     return [yes_val, no_val]
+
+  getURL: (name) =>
+    try
+      console.log(name)
+      prefix = "http://www.ucnrs.org/reserves/"
+      if name == "Valentine Eastern Sierra Reserve -Valentine Camp"
+        return prefix+"valentine-eastern-sierra-reserve.html"
+      if name == "Steele Burnand Anza-Borrego Desert Research Center"
+        return prefix+"steeleburnand-anza-borrego-desert-research-center.html"
+      lower = name.toLowerCase()
+      if name == "Ano Nuevo Island"
+        return prefix+"ano-nuevo-island-reserve.html"
+      dashes =  lower.replace(/\s+/g, "-")
+      slashes =  dashes.replace(/\//g, "")
+      return prefix+slashes+".html"
+    catch err
+      console.log("err getting url: ", err)
+      return "http://www.ucnrs.org/reserves.html"
 
   drawPie: (data, pie_name) =>
 

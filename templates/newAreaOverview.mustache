@@ -1,3 +1,18 @@
+<div class="reportSection">
+  <h4>Size</h4>
+  {{#isWithinReserve}}
+    <p style="large"><b>{{aoi_name}}</b> is <b>{{aoi_size}} m<sup>2</sup></b> and is within the <b><a href={{aoi_res_url}} target="_blank">{{aoi_res_name}}</a></b>.</p>
+  {{/isWithinReserve}}
+  {{^isWithinReserve}}
+    {{#isCollection}}
+          <p style="large"><b>{{aoi_name}}</b> is <b>{{aoi_size}} m<sup>2</sup></b>.</p>
+    {{/isCollection}}
+
+    {{^isCollection}}
+          <p style="large"><b>{{aoi_name}}</b> is <b>{{aoi_size}} m<sup>2</sup></b> but is not within an existing reserve.</p>
+    {{/isCollection}}
+  {{/isWithinReserve}}
+</div>
 
 <div class="reportSection">
     <h4>Number of Habitats in '{{sketch_name}}'</h4>
