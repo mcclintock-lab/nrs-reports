@@ -1,0 +1,51 @@
+
+<div class="reportSection">
+    <h4>Number of Habitats in '{{sketch_name}}'</h4>
+    {{#d3IsPresent}}
+        <div>
+          <div class="hab_pie" id="hab_pie"></div>
+        </div>
+    {{/d3IsPresent}}
+    {{^d3IsPresent}}
+    <p>
+      '{{sketch_name}}' includes <b>{{found_habs}}</b> of the <b>{{total_habs}}</b> CWHR habitats within California.
+    </p>
+    {{/d3IsPresent}}
+ </div>
+
+<div class="reportSection tableContainer">
+    <h4>Missing Habitats</h4>
+      <table data-paging="10">
+        <thead>
+          <tr>
+            <th>Habitat Name</th>
+          </tr>
+       </thead>
+        <tbody>
+          {{#missing_habs}}
+            <tr>
+              <td>{{NAME}}</td>
+            </tr>
+          {{/missing_habs}}
+        </tbody>
+    </table>
+ </div>
+
+<div class="reportSection tableContainer">
+    <h4>Habitats</h4>
+    <table data-paging="10">
+      <thead>
+        <tr>
+          <th>Habitat Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#habs}}
+          <tr>
+            <td>{{NAME}}</td>
+          </tr>
+        {{/habs}}
+      </tbody>
+    </table>
+ </div>
+

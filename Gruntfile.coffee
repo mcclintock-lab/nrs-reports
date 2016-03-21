@@ -58,6 +58,9 @@ module.exports = (grunt) ->
       report:
         src: 'scripts/report.coffee'
         dest: 'dist/report.js'
+      newAreaReport:
+        src: 'scripts/newAreaReport.coffee'
+        dest: 'dist/newAreaReport.js'
       generic:
         src: 'scripts/generic.coffee'
         dest: 'dist/generic.js'

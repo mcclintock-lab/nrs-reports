@@ -390,3 +390,39 @@
   font: 10px sans-serif;
   text-anchor: middle;
 }
+.arc path {
+  stroke: #fff;
+}
+.pie-label {
+  font-weight: bold;
+  padding-left: 5px;
+  display: inline;
+  vertical-align: middle;
+}
+.pie-label-swatch {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+  opacity: 1.0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.hab_pie {
+  width: 100px;
+  display: inline-block;
+}
+.hab_pie_legend {
+  width: 300px;
+  height: 30px;
+  padding-top: 5px;
+  display: inline-block;
+  vertical-align: top;
+}
+.legend-row {
+  display: inline-block;
+  width: 300px;
+}
