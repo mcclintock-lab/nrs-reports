@@ -64,7 +64,7 @@ class NewAreaOverviewTab extends ReportTab
     
     @$el.html @template.render(context, templates)
     @enableTablePaging()
-    @drawPie(pie_data, 'hab_pie')
+    @drawPie(pie_data, '#hab_pie')
 
 
   roundData: (items) =>  
@@ -75,20 +75,21 @@ class NewAreaOverviewTab extends ReportTab
     return items
 
   build_values: (yes_label, yes_count, yes_color, no_label, no_count, no_color) =>
-    yes_val = {"label":yes_label+" ("+yes_count+")", "value":yes_count, "color":yes_color, "yval":25}
-    no_val = {"label":no_label+" ("+no_count+")", "value":no_count, "color":no_color, "yval":50}
+    yes_val = {"label":yes_label+" ("+yes_count+")", "value":yes_count, "color":yes_color, "yval":50}
+    no_val = {"label":no_label+" ("+no_count+")", "value":no_count, "color":no_color, "yval":75}
 
     return [yes_val, no_val]
 
   drawPie: (data, pie_name) =>
-    console.log("pie_name: ", pie_name, data)
+
+
     if window.d3
-      w = 90
-      h = 75
-      r = 25
+      w = 160
+      h = 110
+      r = 50
      
       vis_el = @$(pie_name)[0]
-      #vis = d3.select(vis_el)
+      
       vis = d3.select(vis_el).append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + (r*2) + "," + (r+5) + ")")
       
     

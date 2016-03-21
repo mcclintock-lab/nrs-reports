@@ -4,6 +4,7 @@
     {{#d3IsPresent}}
         <div>
           <div class="hab_pie" id="hab_pie"></div>
+          <div class="hab_pie_legend" id="hab_pie_legend"></div>
         </div>
     {{/d3IsPresent}}
     {{^d3IsPresent}}
@@ -14,7 +15,7 @@
  </div>
 
 <div class="reportSection tableContainer">
-    <h4>Missing Habitats</h4>
+    <h4>Missing Habitats ({{missing_hab_count}} of {{total_habs}})</h4>
       <table data-paging="10">
         <thead>
           <tr>
@@ -32,7 +33,7 @@
  </div>
 
 <div class="reportSection tableContainer">
-    <h4>Habitats</h4>
+    <h4>Habitats Found ({{found_habs}} of {{total_habs}})</h4>
     <table data-paging="10">
       <thead>
         <tr>
