@@ -27,16 +27,21 @@ class NewAreaOverviewTab extends ReportTab
     isCollection = @model.isCollection()
     size = @recordSet('SizeToolbox', 'Size').float('Size')
     aoi_size = @addCommas size.toFixed(1)
-    res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
-    if res_name == null or isCollection
-      aoi_res_name = "no sketches within an existing reserve"
-      isWithinReserve = false
-      aoi_res_url = ""
-    else
-      aoi_res_name = res_name.toString()
-      isWithinReserve = true
-      aoi_res_url = @getURL aoi_res_name
-    
+    try
+      res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
+      if res_name == null or isCollection
+        aoi_res_name = "no sketches within an existing reserve"
+        isWithinReserve = false
+        aoi_res_url = ""
+      else
+        aoi_res_name = res_name.toString()
+        isWithinReserve = true
+        aoi_res_url = @getURL aoi_res_name
+    catch err
+        aoi_res_name = "no sketches within an existing reserve"
+        isWithinReserve = false
+        aoi_res_url = ""
+
     aoi_name = @model.attributes.name
     aoi_name = aoi_name.charAt(0).toUpperCase() + aoi_name.slice(1)
 
