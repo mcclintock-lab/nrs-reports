@@ -82,12 +82,16 @@ class OverviewTab extends ReportTab
         return prefix+"valentine-eastern-sierra-reserve.html"
       if name == "Steele Burnand Anza-Borrego Desert Research Center"
         return prefix+"steeleburnand-anza-borrego-desert-research-center.html"
+      if name == "Burns Piñon Ridge Reserve"
+        return prefix+"burns-pinon-ridge-reserve.html"
       lower = name.toLowerCase()
       if name == "Ano Nuevo Island"
         return prefix+"ano-nuevo-island-reserve.html"
       dashes =  lower.replace(/\s+/g, "-")
       slashes =  dashes.replace(/\//g, "")
-      return prefix+slashes+".html"
+      esc = _.escape(slashes)
+      
+      return prefix+esc+".html"
     catch err
       console.log("err getting url: ", err)
       return "http://www.ucnrs.org/reserves.html"
