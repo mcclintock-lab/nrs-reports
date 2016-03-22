@@ -94,7 +94,7 @@ class OverviewTab extends ReportTab
 
   drawCharts: (habitats, amphibians, reptiles, birds, mammals) =>
     num_habitats = habitats?.length
-    max_habitats = 56
+    max_habitats = 57
     num_amphibians = amphibians?.length
     max_amphibians = 41
     num_reptiles = reptiles?.length
