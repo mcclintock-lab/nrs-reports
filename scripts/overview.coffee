@@ -35,7 +35,15 @@ class OverviewTab extends ReportTab
     mammals = @roundData(mammals)
 
     size = @recordSet('SizeToolbox', 'Size').float('Size')
-    aoi_size = @addCommas size.toFixed(1)
+    size_acres = size*0.000247105
+    
+    if size_acres < 0.1
+      if size_acres < 0.01
+        aoi_size = "< 0.01"
+      else
+        aoi_size = @addCommas size_acres.toFixed(2)
+    else
+      aoi_size = @addCommas size_acres.toFixed(1)
     res_name = @recordSet('SizeToolbox', 'ReserveName').raw('ResName')
     aoi_res_name = res_name.toString()
 
